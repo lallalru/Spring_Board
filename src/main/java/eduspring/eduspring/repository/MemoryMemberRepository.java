@@ -1,6 +1,7 @@
 package eduspring.eduspring.repository;
 
 import eduspring.eduspring.domain.Member;
+import org.springframework.data.domain.Sort;
 
 import java.util.*;
 
@@ -30,7 +31,7 @@ public class MemoryMemberRepository implements MemberRepository{
     }
 
     @Override
-    public List<Member> findAll() {
+    public List<Member> findAll(Sort id) {
         return new ArrayList<>(store.values());
     }
 

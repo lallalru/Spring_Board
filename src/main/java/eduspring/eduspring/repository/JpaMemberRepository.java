@@ -1,10 +1,9 @@
 package eduspring.eduspring.repository;
 
 import eduspring.eduspring.domain.Member;
+import org.springframework.data.domain.Sort;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,8 +43,9 @@ public class JpaMemberRepository implements MemberRepository{
     }
 
     @Override
-    public List<Member> findAll() {
-        return em.createNamedQuery("select m from Member as m order by id desc", Member.class)
+    public List<Member> findAll(Sort id) {
+        return em.createNamedQuery("select m from Member as m", Member.class)
                 .getResultList();
     }
+
 }

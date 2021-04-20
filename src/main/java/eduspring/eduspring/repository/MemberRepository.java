@@ -1,6 +1,7 @@
 package eduspring.eduspring.repository;
 
 import eduspring.eduspring.domain.Member;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +12,5 @@ public interface MemberRepository {
     Optional<Member> findById(Long id);
     Optional<Member> findByName(String name);
     void deleteById(Long id);
-    List<Member> findAll();
-
+    List<Member> findAll(Sort id);
 }

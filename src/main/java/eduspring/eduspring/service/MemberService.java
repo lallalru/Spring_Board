@@ -1,15 +1,11 @@
 package eduspring.eduspring.service;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import eduspring.eduspring.domain.Member;
 import eduspring.eduspring.dto.MemberDto;
 import eduspring.eduspring.repository.MemberRepository;
-import eduspring.eduspring.repository.MemoryMemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +35,7 @@ public class MemberService {
     }
 
     public List<Member> findMembers(){  //전체회원조회
-        List<Member> memberEntity = memberRepository.findAll();
+        List<Member> memberEntity = memberRepository.findAll(Sort.by(Sort.Direction.DESC,"id"));
         List<MemberDto> memberDto = new ArrayList<>();
 
         for(Member member : memberEntity){
@@ -50,7 +46,7 @@ public class MemberService {
                     .build();
             memberDto.add(dto);
         }
-        return memberRepository.findAll();
+        return memberRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     public Optional<Member> findOne(Long memberId) {
