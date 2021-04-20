@@ -6,10 +6,7 @@ import eduspring.eduspring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -61,13 +58,18 @@ public class MemberController {
         return "members/boardContent";
     }
 
-  /*  @PutMapping("/members/content/{id}")
-    public String modify(MemberForm form, Member member){
+    @PostMapping("/members/content/{id}")
+    public String update(MemberForm form, Member member){
         member.setName(form.getName());
         member.setContent((form.getContent()));
-        System.out.println("test11");
-//        memberService.modify(member);
-        return "members/memberList";
-    }*/
+        memberService.join(member);
+        return "redirect:/members";
+    }
+
+    @DeleteMapping("/members/content/{id}")
+    public String delete(@PathVariable("id") Long id){
+        memberService.delete(id);
+        return "redirect:/members";
+    }
 
 }

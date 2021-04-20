@@ -3,7 +3,7 @@
 <!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
 <body>
 <div class="container">
-    <form th:action="@{'/members/content/edit/'}" method="post">
+    <form th:action="@{'/members/content/'+${member.id}}" method="post">
         <div class="form-group">
             <label for="name">게시글 제목</label>
             <input type="text" id="name" name="name" th:value="${member.name}">
@@ -11,12 +11,14 @@
         <br/>
         <div>
             <label for="name">게시글 내용</label> <br/>
-            <textarea id="content" name="content" cols="30" rows="10" th:value="${member.content}">
-            </textarea>
+            <textarea id="content" name="content" cols="30" rows="10"
+            th:text="${member.content}"></textarea>
         </div>
         <button type="button" onclick="location.href='/members'">뒤로가기</button>
-        <button type="submit">수정</button>
-        <button type="submit">삭제</button>
+        <button type="submit" value="수정">수정</button>
+    </form>
+    <form th:action="@{'/members/content/'+${member.id}}" th:method="delete">
+        <button type="submit" value="삭제">삭제</button>
     </form>
 </div> <!-- /container -->
 </body>

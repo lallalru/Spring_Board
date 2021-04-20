@@ -58,8 +58,8 @@ public class MemberService {
 
     }
 
-//    public Long modify(Member member){
-//        memberRepository.modifyById(member.getId());
-//        return member.getId();
-//    }
+    public void delete(Long id){
+        memberRepository.deleteById(id);
+
+    }
 }

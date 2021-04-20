@@ -38,11 +38,10 @@ public class JpaMemberRepository implements MemberRepository{
         return result.stream().findAny();
     }
 
-//    @Override
-//    public Optional<Member> modifyById(Long id) {
-//        Member member = em.find(Member.class, id);
-//        return Optional.ofNullable(member);
-//    }
+    @Override
+    public void deleteById(Long id) {
+        em.detach(id);
+    }
 
     @Override
     public List<Member> findAll() {
