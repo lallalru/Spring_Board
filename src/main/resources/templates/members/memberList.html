@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>게시판 목록
+            <tr>
+                <th>No.</th>
+                <th>ID</th>
+                <th>제목</th>
+                <th>내용</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.id}"></td>
+                <td ><a th:text="${member.name}"
+                       th:href="@{'/members/content/'+${member.id}}"> </a></td>
+                <td th:text="${member.content}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="button" onclick="location.href='/'">뒤로가기</button>
+</div> <!-- /container -->
+</body>
+</html>
