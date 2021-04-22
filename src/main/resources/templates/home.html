@@ -4,6 +4,7 @@
 <div class="container">
     <div>
         <h1>게시판</h1>
+        <h2 th:text="|${user.id}님 환영합니다|"></h2>
         <!--<table>
             <thead>게시판 목록
             <tr>
@@ -21,6 +22,19 @@
         <p>
             <a href="/members/new">게시글 작성</a>
             <a href="/members">게시글 목록</a>
+        </p>
+        <p>
+            <form method="post">
+                <label for="id">ID</label>
+                <input type="text" id="id" name="id" placeholder="ID">
+                <label for="ps">PS</label>
+                <input type="text" id="ps" name="ps" placeholder="PS">
+                <button formaction="/people/signIn" type="submit">회원가입</button>
+                <button formaction="/people/logIn" type="submit">로그인</button>
+                <div th:text="${message}" style="color:red"></div>
+            </form>
+
+
         </p>
     </div>
 </div> <!-- /container -->

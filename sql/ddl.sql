@@ -6,3 +6,11 @@ name varchar(255),
 content varchar(255),
 primary key (id)
 );
+
+create table people
+(
+id varchar(255),
+ps varchar(255),
+bookmark int(10) default null is null,
+primary key (id)
+);

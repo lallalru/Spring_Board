@@ -3,7 +3,8 @@ package eduspring.eduspring.service;
 import eduspring.eduspring.domain.Member;
 import eduspring.eduspring.dto.MemberDto;
 import eduspring.eduspring.repository.MemberRepository;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class MemberService {
     public List<Member> findMembers(){  //전체회원조회
         List<Member> memberEntity = memberRepository.findAll(Sort.by(Sort.Direction.DESC,"id"));
         List<MemberDto> memberDto = new ArrayList<>();
+        Page<Member> page = new PageImpl<Member>(memberEntity);
 
         for(Member member : memberEntity){
             MemberDto dto = MemberDto.builder()
@@ -58,4 +60,10 @@ public class MemberService {
         memberRepository.deleteById(id);
 
     }
+
+    public List<Member> findAll(PageRequest pageRequest){
+        Page<Member> recordsPage = memberRepository.findAll(pageRequest);
+        return recordsPage.getContent();
+    }
+
 }

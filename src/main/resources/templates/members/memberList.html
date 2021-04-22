@@ -3,12 +3,15 @@
 <body>
 <div class="container">
     <div>
+<!--        <h2 th:text="|${user.id}님 환영합니다|"></h2>-->
         <table>
             <thead>게시판 목록
+
             <tr>
                 <th>No.</th>
                 <th>제목</th>
                 <th>내용</th>
+                <th>북마크</th>
             </tr>
             </thead>
             <tbody>
@@ -17,6 +20,7 @@
                 <td ><a th:text="${member.name}"
                        th:href="@{'/members/content/'+${member.id}}"> </a></td>
                 <td th:text="${member.content}"></td>
+                <td><input type="checkbox"></td>
             </tr>
             </tbody>
         </table>

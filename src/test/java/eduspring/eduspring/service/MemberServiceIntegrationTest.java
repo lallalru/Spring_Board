@@ -2,9 +2,6 @@ package eduspring.eduspring.service;
 
 import eduspring.eduspring.domain.Member;
 import eduspring.eduspring.repository.MemberRepository;
-import eduspring.eduspring.repository.MemoryMemberRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @Transactional
 class MemberServiceIntegrationTest {
 
-    @Autowired MemberService memberService;
+    @Autowired
+    MemberService memberService;
     @Autowired MemberRepository memberRepository;
 
 

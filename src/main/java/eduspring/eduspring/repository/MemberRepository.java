@@ -1,6 +1,8 @@
 package eduspring.eduspring.repository;
 
 import eduspring.eduspring.domain.Member;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -13,4 +15,6 @@ public interface MemberRepository {
     Optional<Member> findByName(String name);
     void deleteById(Long id);
     List<Member> findAll(Sort id);
+    Page<Member> findAll(Pageable pageable);
+
 }

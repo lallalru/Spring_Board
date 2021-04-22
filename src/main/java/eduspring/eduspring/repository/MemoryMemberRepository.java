@@ -1,6 +1,9 @@
 package eduspring.eduspring.repository;
 
 import eduspring.eduspring.domain.Member;
+import eduspring.eduspring.domain.People;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.*;
@@ -35,6 +38,10 @@ public class MemoryMemberRepository implements MemberRepository{
         return new ArrayList<>(store.values());
     }
 
+    @Override
+    public Page<Member> findAll(Pageable pageable) {
+        return null;
+    }
 
     @Override
     public void deleteById(Long id) {
@@ -44,4 +51,6 @@ public class MemoryMemberRepository implements MemberRepository{
     public void clearStore(){
         store.clear();
     }
+
+
 }

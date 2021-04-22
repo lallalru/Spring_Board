@@ -1,14 +1,9 @@
 package eduspring.eduspring.service;
 
-import eduspring.eduspring.aop.TimeTraceAop;
 import eduspring.eduspring.repository.*;
-import eduspring.eduspring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.persistence.EntityManager;
-import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
@@ -30,16 +25,25 @@ public class SpringConfig {
     */
 
     private final MemberRepository memberRepository;
+    private final PeopleRepository peopleRepository;
 
     @Autowired
-    public SpringConfig(MemberRepository memberRepository) {
+    public SpringConfig(MemberRepository memberRepository, PeopleRepository peopleRepository) {
         this.memberRepository = memberRepository;
+        this.peopleRepository = peopleRepository;
     }
 
     @Bean
     public MemberService memberService() {
         return new MemberService(memberRepository);
     }
+
+    @Bean
+    public PeopleService peopleService() {
+        return new PeopleService(peopleRepository);
+    }
+
+
 
 /*    @Bean
     public TimeTraceAop timeTraceAop(){
