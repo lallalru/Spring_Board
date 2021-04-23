@@ -32,7 +32,6 @@ public class PeopleService {
     }
 
     public Optional<People> findOne(People people) {
-        System.out.println("hi hi hi");
         return (peopleRepository.findById(people.getId()));
 
     }

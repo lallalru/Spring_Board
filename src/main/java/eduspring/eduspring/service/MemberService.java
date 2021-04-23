@@ -20,22 +20,20 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public Long join(Member member) { //회원가입
-        //같은 이름의 중복 회원 가입 불가
-
+    public Long join(Member member) { //게시판 등록
             //validateDuplicateMember(member);
             memberRepository.save(member);
             return member.getId();
     }
 
-    private void validateDuplicateMember(Member member) {
+    private void validateDuplicateMember(Member member) { //중복체크용 함수
         memberRepository.findByName(member.getName())
             .ifPresent(m -> {
-                throw new IllegalStateException("이미 존재하는 회원 이름입니다.");
+                throw new IllegalStateException("이미 존재하는 이름입니다.");
             });
     }
 
-    public List<Member> findMembers(){  //전체회원조회
+    public List<Member> findMembers(){  //전체게시판조회
         List<Member> memberEntity = memberRepository.findAll(Sort.by(Sort.Direction.DESC,"id"));
         List<MemberDto> memberDto = new ArrayList<>();
         Page<Member> page = new PageImpl<Member>(memberEntity);

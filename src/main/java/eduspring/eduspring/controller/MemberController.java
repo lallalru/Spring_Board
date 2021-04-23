@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,9 +60,6 @@ public class MemberController {
         }else{
             rttr.addFlashAttribute("message","가입 정보가 일치하지 않습니다.");
         }
-
-
-
         return "redirect:/";
     }
 
@@ -81,7 +80,7 @@ public class MemberController {
     }
 
     @GetMapping("/members")
-    public String list(Model model){
+    public String list(Model model, RedirectAttributes rttr){
         List<Member> members = memberService.findMembers();
         model.addAttribute("members", members);
         return "members/memberList";
